@@ -1,4 +1,4 @@
-**What Conversational-app-team 2 is about**
+**Conversational-app-team 2**
 
 This is a conversational learning app
 The Conversational App is a conversational learning manager. 
