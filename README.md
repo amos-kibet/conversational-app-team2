@@ -1,4 +1,5 @@
-**Conversational-app-team 2**
+# Conversational-app-team # 
+
 
 This is a conversational learning app
 The Conversational App is a conversational learning manager. 
@@ -17,7 +18,9 @@ Conversational system.
 and have direct chat with a participant and to guide the participants to parts of the application.
 
 
-**The Techonologies used**
+# Techonologies used # 
+
+Our application is built upon different technologies which currently include:
 
 Frontend - Javascript/React
 Backend - Nodejs
