@@ -1,7 +1,8 @@
 # Conversational-app-team # 
 
+# iLearn App #
 
-This is a conversational learning app
+This is iLearn, a conversational learning app
 The Conversational App is a conversational learning manager. 
 It allows you to build, host and manage courses that run over a conversational platform 
 such as WhatsApp, Telegram, Messenger or our very own web platform. 
