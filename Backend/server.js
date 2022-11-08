@@ -1,22 +1,29 @@
 require('dotenv').config()
-
 const express = require('express')
-const chatsRoutes = require('./routes/chats')
+const bodyParser = require('body-parser')
+const adminRouter = require('./routes/admin')
+const userRouter = require('./routes/user')
+const authorRouter = require('./routes/author')
+
 
 const app = express()
 
-//Register Middleware
+//middlewares
+
 app.use(express.json())
-app.use((req, res, next) => {
-    console.log(req.path, req.method)
-    next()
-})
+app.use(express.urlencoded({
+    extended: true
+}))
+
 
 //routes
-app.use(chatsRoutes)
-app.use('/api/chats', chatsRoutes)
+app.use('/api/user', userRouter)
+app.use('/api/admin', adminRouter)
+app.use('/api/author', authorRouter)
 
-//listen for requests
-app.listen(process.env.PORT, () => {
-    console.log('listening on port, process.env.PORT')
-})
+
+app.listen(process.env.PORT, () => 
+console.log(`This app is listening on port, ${process.env.PORT} `))
+
+
+
