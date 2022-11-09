@@ -7,12 +7,12 @@ import About from './routes/About';
 
 const router = createBrowserRouter([
 	{
-		path: '/',
-		element: <Home />,
-	},
-	{
 		path: '/about',
 		element: <About />,
+	},
+	{
+		path: '/',
+		element: <Home />,
 	},
 ]);
 
