@@ -1,5 +1,5 @@
 # Conversational-app-team # 
-![IMG-20221105-WA0004](https://user-images.githubusercontent.com/1963879/200798000-bac3d0a4-4721-4ca5-94c6-5d6d5b7dac56.jpg)
+![IMG-20221105-WA0004-removebg-preview](https://user-images.githubusercontent.com/1963879/200799945-2a28f1a8-80cc-41a8-beb4-de2cdf845459.png)
 
 
 
