@@ -1,4 +1,3 @@
-# Conversational-app-team # 
 
 ![download](https://user-images.githubusercontent.com/1963879/200801383-6774d48f-25fa-40aa-84fd-f48b58650c78.png)
 
