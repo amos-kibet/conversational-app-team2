@@ -4,8 +4,7 @@
 
 # iLearn App #
 
-This is iLearn, a conversational learning app
-The Conversational App is a conversational learning manager. 
+This is iLearn, a conversational learning app/manager. 
 It allows you to build, host and manage courses that run over a conversational platform 
 such as WhatsApp, Telegram, Messenger or our very own web platform. 
 
@@ -13,13 +12,10 @@ such as WhatsApp, Telegram, Messenger or our very own web platform.
 
 - A conversation builder.
 - A drag-and-drop editor for building chatbot conversations/stories.
-
 - Chatbot channel management & hosting.
-
 - The ability to connect different channels to the chatbot manager and to link conversations/stories.
   This includes channel registration such as WhatsApp Business API registration on the platform/ Telegram
-  Conversational system.
-  
+  Conversational system.  
 - Mirror of chat(bot) conversations with a user and the ability to take over from the bot
   and have direct chat with a participant and to guide the participants to parts of the application.
 
