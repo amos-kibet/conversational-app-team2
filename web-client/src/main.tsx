@@ -6,6 +6,7 @@ import Home from './routes/Home';
 import About from './routes/About';
 import Register from './routes/Register';
 import Login from './routes/Login';
+import Dashboard from './routes/Dashboard';
 
 const router = createBrowserRouter([
 	{
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
 	{
 		path: '/login',
 		element: <Login />
+	},
+	{
+		path: '/dashboard',
+		element: <Dashboard />
 	}
 ]);
 

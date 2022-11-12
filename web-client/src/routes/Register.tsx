@@ -15,7 +15,7 @@ const Register = () => {
 
   const onSubmitHandler = async (e: any) => {
     e.preventDefault();
-    navigate("/login")
+    
   };
 
   return (
