@@ -1,0 +1,9 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the backend API for the iLearn app. It helps us handle all the opeation on the application.",
+    "version": "1.0.0",
+    "title": "iLearn API",
+    "contact": {}
+  }
+}
