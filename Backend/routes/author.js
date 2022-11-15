@@ -1,36 +1,40 @@
 const express = require('express')
 const router = express.Router()
 
-//controller
-const { authorController } = require('../controllers/author')
+//Usercontroller functions
 
-//route to pages
-
-/*router
-.get('/', authorController.getAll)
-.get('/:id', authorController.getById)
-.post('/', authorController.createUser)
-.put('/:id', authorController.createUser)
-.delete('/:id', authorController.createUser)*/
+const { 
+    authorController, 
+    Logincontroller, 
+    Authcontroller, 
+    listUser,
+    CheckRole }  = require('../controllers/author')
 
 
-//Users Registration route
+
+//Authors Registration route
 router
 .post('/register-author', async(req, res, next) => {
     await authorController(req.body, 'author', res)
 })
 
-//Users Login route
+//Authors Login route
 router
-.post('/login-author', async(req, res, next) => {})
+.post('/login-author', async(req, res, next) => {
+    await Logincontroller(req.body, 'author', res)
+})
 
 //Get Profile route
 router
-.get('/profile', async(req, res, next) => {})
-//Users Protected route
+.get('/profile', Authcontroller, async(req, res, next) => {
+    return res.json(listUser(req.user)) 
+})
+//Authors Protected route
 router
-.post('/author-protected', async(req, res, next) => {})
-
+.get('/author-protected', Authcontroller, CheckRole(['author']), async(req, res, next) => {
+    return res
+            .json('Hello Author, Welcome to the conversational app.')
+})
 
 
 
