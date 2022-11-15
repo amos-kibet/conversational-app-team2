@@ -1,18 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
-//controllers
+//Usercontroller functions
 
-const { Usercontroller }  = require('../controllers/user')
+const { 
+    Usercontroller, 
+    Logincontroller, 
+    Authcontroller, 
+    listUser,
+    CheckRole }  = require('../controllers/user')
 
-//route to pages
-/*
-router
-.get('/', Usercontroller.getAll)
-.get('/:id',Usercontroller.getById)
-.post('/', Usercontroller.createUser)
-.put('/', Usercontroller.createUser)
-.delete('/:id', Usercontroller.createUser)*/ 
+
 
 //Users Registration route
 router
@@ -22,14 +20,21 @@ router
 
 //Users Login route
 router
-.post('/login-user', async(req, res, next) => {})
+.post('/login-user', async(req, res, next) => {
+    await Logincontroller(req.body, 'user', res)
+})
 
 //Get Profile route
 router
-.get('/profile', async(req, res, next) => {})
+.get('/profile', Authcontroller, async(req, res, next) => {
+    return res.json(listUser(req.user)) 
+})
 //Users Protected route
 router
-.post('/user-protected', async(req, res, next) => {})
+.get('/user-protected', Authcontroller, CheckRole(['user']), async(req, res, next) => {
+    return res
+            .json('Hello User, Welcome to the conversational app.')
+})
 
 
 
