@@ -1,7 +1,13 @@
-import React from 'react';
+import Navbar from "../components/reusables/Navbar";
+
 
 const Home = () => {
-	return <div className="text-yellow-400">Home</div>;
+  
+  return (
+    <div>
+		<Navbar />
+	</div>
+  );
 };
 
 export default Home;
