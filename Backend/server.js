@@ -4,6 +4,7 @@ const adminRouter = require('./routes/admin')
 const userRouter = require('./routes/user')
 const authorRouter = require('./routes/author')
 const passport = require('passport')
+const { join } = require('path')
 const { connect } = require('mongoose')
 const { success, error } = require('consola')
 
@@ -20,6 +21,7 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
+app.use(express.static(join(__dirname, '/uploads')))
 
 require('./middlewares/passport')(passport)
 
