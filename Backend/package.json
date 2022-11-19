@@ -26,6 +26,10 @@
     "passport-jwt": "^4.0.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "prettier": "2.7.1"
+=======
+    "eslint": "^8.28.0"
+>>>>>>> 712da8a956edacada2dd79edc35d6a52d66d1e81
   }
 }
