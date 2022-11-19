@@ -1,33 +1,37 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require("mongoose")
+
+
 const ProfileSchema = new Schema({
-    accound: {
+    account: {
         type: Schema.Types.ObjectId,
-        ref: 'user'
+        ref: "user"
     },
     avatar: {
         type: String,
-        required: false 
+        required: false
     },
     social: {
         facebook: {
             type: String,
-            required: false 
+            required: false
         },
         twitter: {
             type: String,
-            required: false 
+            required: false
         },
         linkedIn: {
             type: String,
-            required: false 
+            required: false
         },
         github: {
             type: String,
-            required: false 
+            required: false
         },
     },
-}, {timestamps: true})
+},
+    { timestamps: true }
+)
 
-const Profile = model('profiles', ProfileSchema)
+const Profile = model("profiles", ProfileSchema)
 
-module.exports = Profile
+module.exports = Profile;
