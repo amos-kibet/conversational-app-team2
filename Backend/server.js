@@ -1,18 +1,18 @@
-require('dotenv').config()
-const express = require('express')
-const adminRouter = require('./routes/admin')
-const userRouter = require('./routes/user')
-const authorRouter = require('./routes/author')
-const passport = require('passport')
-const { join } = require('path')
-const { connect } = require('mongoose')
-const { success, error } = require('consola')
+require("dotenv").config();
+const express = require("express");
+const adminRouter = require("./routes/admin");
+const userRouter = require("./routes/user");
+const authorRouter = require("./routes/author");
+const passport = require("passport");
+const { join } = require("path");
+const { connect } = require("mongoose");
+const { success, error } = require("consola");
 
 //app constants
-const { DB, PORT } = require('./config')
+const { DB, PORT } = require("./config");
 
 //initialize app
-const app = express()
+const app = express();
 
 
 //Middlewares
@@ -35,7 +35,7 @@ app.use('/api/admin', adminRouter)
 
 
 //db
-const runApp = async() => {
+const runApp = async () => {
     try {
         await connect(DB, {
             useUnifiedTopology: true,
@@ -43,15 +43,15 @@ const runApp = async() => {
         })
 
         success({
-            mssg: `Successfully connected to the Database,\n ${ DB }`,
+            mssg: `Successfully connected to the Database,\n ${DB}`,
             badge: true
         })
-//Listening for the server on port
+        //Listening for the server on port
         app.listen(PORT, () =>
-        success({
-            mssg: `Listening on port, ${PORT}`,
-            badge: true
-        })
+            success({
+                mssg: `Listening on port, ${PORT}`,
+                badge: true
+            })
         )
     } catch (err) {
         error({
@@ -61,7 +61,7 @@ const runApp = async() => {
         runApp()
     }
 }
-  
+
 runApp()
 
 
