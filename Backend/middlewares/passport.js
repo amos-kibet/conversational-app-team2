@@ -18,7 +18,7 @@ module.exports = (passport) => {
         }
         //Implement logger function 
         return done(null, false)
-      }).catch((err) => {
+      }).catch(() => {
         //Implement logger function
         return (null, false)
       });

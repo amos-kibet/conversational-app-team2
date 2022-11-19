@@ -62,7 +62,7 @@ router
 
 router
     .post("/create-profile", Authcontroller, uploader.single("avatar"),
-        async (req, res, next) => {
+        async (req, res) => {
             try {
                 let { body, file, user } = req;
                 let path = DOMAIN + file.path.split("uploads")[1];
@@ -88,7 +88,7 @@ router
                         mssg: "We are not able to create your profile.",
                         success: false,
                     });
-            };
+            }
         });
 
 

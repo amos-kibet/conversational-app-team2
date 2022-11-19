@@ -1,8 +1,8 @@
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-const User = require('../models/User')
-const { SECRET } = require('../config')
-const passport = require('passport')
+const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+const User = require("../models/User")
+const { SECRET } = require("../config")
+const passport = require("passport")
 
 
 /**
@@ -20,7 +20,7 @@ const adminController = async (userPayload, role, res) => {
                 .json(
                     {
                         success: false,
-                        mssg: 'Username is already taken'
+                        mssg: "Username is already taken"
                     })
         }
 
@@ -32,7 +32,7 @@ const adminController = async (userPayload, role, res) => {
                 .json(
                     {
                         success: false,
-                        mssg: `Email is already registered.`
+                        mssg: "Email is already registered."
                     }
                 )
         }
@@ -49,7 +49,7 @@ const adminController = async (userPayload, role, res) => {
         return res
             .status(201)
             .json({
-                mssg: `You've been successfully registered. Please Login.`,
+                mssg: "You've been successfully registered. Please Login.",
                 success: true
             })
 
@@ -58,7 +58,7 @@ const adminController = async (userPayload, role, res) => {
         return res
             .status(500)
             .json({
-                mssg: `Unable to create your account. Please try again.`,
+                mssg: "Unable to create your account. Please try again.",
                 success: false
             })
     }
@@ -92,7 +92,7 @@ const Logincontroller = async (userCreds, role, res) => {
                 success: false
             })
     }
-    //The above logic means user is existing. And user is trying to signin from the correct portal
+    //The above logic means user is existing. And user is trying to sign in from the correct portal
     //Now check for the password
     let isMatch = await bcrypt.compare(password, user.password)
     if (isMatch) {
@@ -102,7 +102,7 @@ const Logincontroller = async (userCreds, role, res) => {
             role: user.role,
             username: user.username,
             email: user.email
-        }, SECRET, { expiresIn: '14 days' })
+        }, SECRET, { expiresIn: "28 days" })
         let result = {
             username: user.username,
             role: user.role,
@@ -136,7 +136,7 @@ const validateUsername = async username => {
 /**
  * @DESC Passport middleware 
  */
-const Authcontroller = passport.authenticate('jwt', { session: false })
+const Authcontroller = passport.authenticate("jwt", { session: false })
 
 /** 
  * @DESC Check Role Middleware
@@ -144,7 +144,7 @@ const Authcontroller = passport.authenticate('jwt', { session: false })
 
 const CheckRole = roles => (req, res, next) =>
     !roles.includes(req.user.role)
-        ? res.status(401).json('Unauthorized')
+        ? res.status(401).json("Unauthorized")
         : next()
 
 const validateEmail = async email => {

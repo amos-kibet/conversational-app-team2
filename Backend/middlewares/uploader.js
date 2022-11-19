@@ -1,4 +1,5 @@
-const multer = require("multer")
+const multer = require("multer");
+const { __dirname } = require("path");
 const filename = (req, file, next) => {
     //file format
     let lastIndexOf = file.originalname.lastIndexOf(".");
@@ -7,7 +8,7 @@ const filename = (req, file, next) => {
 }
 
 const destination = (req, file, next) => {
-    next(null, `${__dirname}/../uploads`);
+    next(null, `${__dirname }/../uploads`);
 }
 
 const upload = multer({

@@ -25,7 +25,7 @@ const { DOMAIN } = require("../config");
 
 router
     .post("/register", async (req, res) => {
-        await Usercontroller(req.body, 'user', res)
+        await Usercontroller(req.body, "user", res)
     });
 
 /**
@@ -37,7 +37,7 @@ router
 
 router
     .post("/login", async (req, res) => {
-        await Logincontroller(req.body, 'user', res)
+        await Logincontroller(req.body, "user", res)
     });
 
 /**
@@ -62,7 +62,7 @@ router
 
 router
     .post("/create-profile", Authcontroller, uploader.single("avatar"),
-        async (req, res, next) => {
+        async (req, res) => {
             try {
                 let { body, file, user } = req;
                 let path = DOMAIN + file.path.split("uploads")[1];
@@ -84,7 +84,7 @@ router
                 return res
                     .status(400)
                     .json({
-                        mssg: 'We are not able to create your profile.',
+                        mssg: "We are not able to create your profile.",
                         success: false,
                     })
             }
@@ -92,4 +92,4 @@ router
 
 
 
-module.exports = router
+module.exports = router;
