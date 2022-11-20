@@ -15,9 +15,7 @@ const email = require("../services/repo/validate");
 const Usercontroller = async (userPayload, role, res) => {
   try {
     //Validate the username
-    let usernameTaken = await username.username(User, {
-      username: userPayload.username,
-    });
+    let usernameTaken = await username.username(User, userPayload.username);
 
     if (usernameTaken) {
       return res.status(400).json({
@@ -27,7 +25,7 @@ const Usercontroller = async (userPayload, role, res) => {
     }
 
     //Email validation
-    let emailRegistered = await email.email(User, { email: userPayload.email });
+    let emailRegistered = await email.email(User, userPayload.email);
     if (emailRegistered) {
       return res.status(400).json({
         success: false,
@@ -50,7 +48,11 @@ const Usercontroller = async (userPayload, role, res) => {
       success: true,
     });
   } catch (error) {
-    console.log("[REGISTER_CONTROLLER]: " + error.message);
+    console.log("[USER_REGISTER_CONTROLLER]: " + error.message);
+    console.log(
+      "[USER_REGISTER_CONTROLLER_PAYLOAD]: " + Object.keys(userPayload)
+    );
+
     return res.status(500).json({
       mssg:
         `Unable to create your account. Please try again. Check error: ` +
@@ -68,9 +70,9 @@ const Usercontroller = async (userPayload, role, res) => {
 const Logincontroller = async (userPayload, role, res) => {
   try {
     //Check if username is stored in the database
-    const user = await username.username(User, {
-      username: userPayload.username,
-    });
+    const user = await username.username(User, userPayload.username);
+    console.log("[USER_LOGIN_CONTROLLER_PAYLOAD]: " + Object.keys(userPayload));
+
     if (!user) {
       return res.status(404).json({
         mssg: "Username is not found. Invalid login credentials.",
@@ -119,7 +121,7 @@ const Logincontroller = async (userPayload, role, res) => {
       });
     }
   } catch (error) {
-    console.log("[LOGIN_CONTROLLER] : " + error.message);
+    console.log("[USER_LOGIN_CONTROLLER]: " + error.message);
     return res.status(500).json({
       mssg: `Unable to login. Check error: ` + error.message,
       success: false,

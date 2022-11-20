@@ -13,9 +13,7 @@ const email = require("../services/repo/validate");
 const authorController = async (userPayload, role, res) => {
   try {
     //Validate the username
-    let usernameTaken = await username.username(User, {
-      username: userPayload.username,
-    });
+    let usernameTaken = await username.username(User, userPayload.username);
     if (usernameTaken) {
       return res.status(400).json({
         success: false,
@@ -24,7 +22,7 @@ const authorController = async (userPayload, role, res) => {
     }
 
     //Email validation
-    let emailRegistered = await email.email(User, { email: userPayload.email });
+    let emailRegistered = await email.email(User, userPayload.email);
     if (emailRegistered) {
       return res.status(400).json({
         success: false,
@@ -46,7 +44,11 @@ const authorController = async (userPayload, role, res) => {
       success: true,
     });
   } catch (err) {
-    console.log("[REGISTER_AUTHOR_CONTROLLER]: " + err.message);
+    console.log("[AUTHOR_REGISTER_AUTHOR_CONTROLLER]: " + err.message);
+    console.log(
+      "[AUTHOR_REGISTER_CONTROLLER_PAYLOAD]: " + Object.keys(userPayload)
+    );
+
     return res.status(500).json({
       mssg: `Unable to create your account. Please try again.`,
       success: false,
@@ -62,10 +64,11 @@ const authorController = async (userPayload, role, res) => {
 const Logincontroller = async (userPayload, role, res) => {
   try {
     //Check if username is stored in the database
-    const user = await username.username(User, {
-      username: userPayload.username,
-    });
-    console.log("[TMP]: " + Object.keys(userPayload));
+    const user = await username.username(User, userPayload.username);
+    console.log(
+      "[AUTHOR_LOGIN_CONTROLLER_PAYLOAD]: " + Object.keys(userPayload)
+    );
+
     if (!user) {
       return res.status(404).json({
         mssg: "Username is not found. Invalid login credentials.",
