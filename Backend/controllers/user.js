@@ -16,6 +16,7 @@ const Usercontroller = async (userPayload, role, res) => {
     //Validate the username
     let usernameTaken = await repo.username(User, userPayload.username);
     console.log("[USER_REGISTER_CONTROLLER] 1: " + Object.keys(userPayload));
+    console.log("[USER_REGISTER_CONTROLLER] 2: " + userPayload.username);
     if (usernameTaken) {
       return res.status(400).json({
         success: false,
@@ -25,6 +26,7 @@ const Usercontroller = async (userPayload, role, res) => {
 
     //Email validation
     let emailRegistered = await repo.email(User, userPayload.email);
+    console.log("[USER_REGISTER_CONTROLLER] 3: " + userPayload.email);
     if (emailRegistered) {
       return res.status(400).json({
         success: false,
@@ -46,7 +48,7 @@ const Usercontroller = async (userPayload, role, res) => {
       success: true,
     });
   } catch (error) {
-    console.log("[USER_REGISTER_CONTROLLER] 2: " + error.message);
+    console.log("[USER_REGISTER_CONTROLLER] 4: " + error.message);
     return res.status(500).json({
       mssg: "Unable to create your account. Please try again.",
       success: false,
