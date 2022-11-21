@@ -24,7 +24,7 @@ const authorController = async (userPayload, role, res) => {
 
     //Email validation
     let emailRegistered = await repo.email(User, userPayload.email);
-    console.log("[AUTHOR_REGISTER_CONTROLLER] 2: " + userPayload.email);
+    console.log("[AUTHOR_REGISTER_CONTROLLER] 3: " + userPayload.email);
 
     if (emailRegistered) {
       return res.status(400).json({
