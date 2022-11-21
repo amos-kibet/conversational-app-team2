@@ -67,6 +67,7 @@ const Logincontroller = async (userPayload, role, res) => {
 
     const user = await repo.username(User, userPayload.username);
     console.log("[USER_LOGIN_CONTROLLER] 1: " + Object.keys(userPayload));
+    console.log("[USER_LOGIN_CONTROLLER] 2: " + userPayload.username);
     if (!user) {
       return res.status(404).json({
         mssg: "Username is not found. Invalid login credentials.",
@@ -114,7 +115,7 @@ const Logincontroller = async (userPayload, role, res) => {
       });
     }
   } catch (error) {
-    console.log("[USER_LOGIN_CONTROLLER]: " + error.message);
+    console.log("[USER_LOGIN_CONTROLLER] 3: " + error.message);
     return res.status(500).json({
       success: false,
       mssg: "Unable to login to your account. Please try again.",
