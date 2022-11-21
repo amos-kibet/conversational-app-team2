@@ -37,6 +37,7 @@ const runApp = async () => {
     await connect(DB, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
+      dbName: "CAD_DATA",
     });
 
     success({
