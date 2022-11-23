@@ -31,6 +31,11 @@ app.use("/api/user", userRouter);
 app.use("/api/author", authorRouter);
 app.use("/api/admin", adminRouter);
 
+// Health check endpoint
+app.get("/api", (_req, res) => {
+  return res.status(200).json({ success: true, mssg: "API working fine!" });
+});
+
 //db
 const runApp = async () => {
   try {
