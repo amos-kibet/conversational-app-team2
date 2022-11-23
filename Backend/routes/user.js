@@ -72,6 +72,36 @@ router
             }
         })
 
+ /**
+ * @description To get the authenticated user's profile
+ * @api /api/user/my-profile
+ * @access Private
+ * @type GET <multipart-form> request
+ */
+
+ router.get("/my-profile", Authcontroller, async (req, res) => {
+    try{
+        let profile = await Profile.findOne({ account: user._id.req.user });
+        if (!profile) {
+            return res.status(404).json({
+                success: false,
+                mssg: "Your profile does not exist.",
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            profile,
+        })
+    } catch(err) {
+        return res.status(400).json({
+            success: false,
+            mssg: "Unable to get your profile.",
+        });
+        
+    }
+ });
+       
+
 
 
 module.exports = router;
