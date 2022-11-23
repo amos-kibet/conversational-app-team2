@@ -81,7 +81,9 @@ router
 
  router.get("/my-profile", Authcontroller, async (req, res) => {
     try{
-        let profile = await Profile.findOne({ account: user._id.req.user });
+        let profile = await Profile.findOne({ account: user._id.req.user }).populate(
+            "account", "name email username"
+        );
         if (!profile) {
             return res.status(404).json({
                 success: false,
