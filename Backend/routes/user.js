@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { Profile } = require("../models/Profile");
+const User = require("../models/User");
+const Profile = require("../models/Profile");
 const uploader = require("../middlewares/uploader");
-
+const { validator } = require("../middlewares/validation");
+const courseValidations  = require("../services/repo/course-validator");
 //Usercontroller functions
 
 
@@ -35,6 +37,7 @@ router
     .get("/authenticate", Authcontroller, async (req, res) => {
         return res
             .json(listUser(req.user))
+            //used the listUser function to abstract the password from the user object
     });
 
 /**
@@ -85,6 +88,7 @@ router
     try{
         let profile = await Profile.findOne({ account: user._id.req.user }).populate(
             "account", "name email username"
+            //used the populate method to abstract the password from account object
         );
         if (!profile) {
             return res.status(404).json({
@@ -141,7 +145,7 @@ router
  * @type GET request
  */
 
-/**router.get("/profile-user/:username", async (req, res) => {
+router.get("/profile-user/:username", async (req, res) => {
     try {
         let { username } = req.params;
         let user = await User.findOne({ username })
@@ -150,7 +154,14 @@ router
                 success: false,
                 mssg: "This user does not exist.",
             });
-        } 
+        }
+        let profile = await Profile.findOne({
+            account: user._id});
+            return res.status(200).json({
+                profile,
+                success: true,
+                user: user.getUserInfo(),
+            });
 
     } catch (err) {
         return res.status(400).json({
@@ -159,7 +170,38 @@ router
         })
 
     }
-})**/
+})
+
+
+/**
+ * @description To create a new course by the authenticated user
+ * @api /api/user/create-course
+ * @access Private
+ * @type POST request
+ */
+
+router.post("/create-course", Authcontroller, courseValidations, async (req, res) => {
+ /** try {
+    //create a new course
+    
+     * let { body } = req;
+    let course = new Course({
+      author: req.user._id,
+      ...body, 
+    })
+    console.log("NEW_COURSE", course);
+  } catch (err) {
+    return res.status(400).json({
+      success: false, 
+      mssg: "Unable to create the course", 
+    })
+
+  }**/
+});
+
+
+
+
 
 
 module.exports = router;
