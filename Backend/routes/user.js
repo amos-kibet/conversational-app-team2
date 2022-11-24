@@ -1,16 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const Profile = require("../models/Profile");
+const { Profile } = require("../models/Profile");
 const uploader = require("../middlewares/uploader");
 
 //Usercontroller functions
+
 
 const {
     Usercontroller,
     Logincontroller,
     Authcontroller,
     listUser,
-    CheckRole,
+    //removed CheckRole
 } = require("../controllers/user");
 const { DOMAIN } = require("../config");
 
@@ -29,8 +30,9 @@ router
     });
 
 //Get Profile route
+//removed Checkrole function
 router
-    .get("/authenticate", Authcontroller, CheckRole(["user"]), async (req, res) => {
+    .get("/authenticate", Authcontroller, async (req, res) => {
         return res
             .json(listUser(req.user))
     });
@@ -76,7 +78,7 @@ router
  * @description To get the authenticated user's profile
  * @api /api/user/my-profile
  * @access Private
- * @type GET <multipart-form> request
+ * @type GET request
  */
 
  router.get("/my-profile", Authcontroller, async (req, res) => {
@@ -93,8 +95,8 @@ router
         return res.status(200).json({
             success: true,
             profile,
-        })
-    } catch(err) {
+        });
+    } catch (err) {
         return res.status(400).json({
             success: false,
             mssg: "Unable to get your profile.",
@@ -102,8 +104,62 @@ router
         
     }
  });
-       
+    
+ /**
+ * @description To update the authenticated user's profile
+ * @api /api/user/update-profile
+ * @access Private
+ * @type PUT <multipart-form> request
+ */
 
+ router.put("/update-profile", Authcontroller, uploader.single("avatar"), async (req, res) => {
+    try {
+        let { body, file, user } = req;
+        let path = DOMAIN + file.path.split("uploads")[1];
+        let profile = await Profile.findOneAndUpdate(
+            { account: user._id }, 
+            { social: body, avatar: path },
+            { new: true }
+        );
+        return res.status(200).json({
+            success: true,
+            mssg: "Your profile has been updated.",
+            profile,
+        });
+    } catch (err) {
+        return res.status(400).json({
+            success: false,
+            mssg: "Unable to get your profile.",
+        });
+    }
+ });
+
+  /**
+ * @description To get the user's profile with the username
+ * @api /api/user/profile-user
+ * @access Public
+ * @type GET request
+ */
+
+/**router.get("/profile-user/:username", async (req, res) => {
+    try {
+        let { username } = req.params;
+        let user = await User.findOne({ username })
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                mssg: "This user does not exist.",
+            });
+        } 
+
+    } catch (err) {
+        return res.status(400).json({
+            success: false,
+            mssg: "Something went wrong.",
+        })
+
+    }
+})**/
 
 
 module.exports = router;
