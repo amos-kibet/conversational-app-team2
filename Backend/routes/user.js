@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 const Profile = require("../models/Profile");
 const uploader = require("../middlewares/uploader");
-const { validator } = require("../middlewares/validation");
+const validator = require("../middlewares/validation");
 const courseValidations  = require("../services/repo/course-validator");
 //Usercontroller functions
 
@@ -180,11 +180,11 @@ router.get("/profile-user/:username", async (req, res) => {
  * @type POST request
  */
 
-router.post("/create-course", Authcontroller, courseValidations, async (req, res) => {
- /** try {
+router.post("/create-course", Authcontroller, courseValidations, validator, async (req, res) => {
+  try {
     //create a new course
     
-     * let { body } = req;
+    let { body } = req;
     let course = new Course({
       author: req.user._id,
       ...body, 
@@ -196,7 +196,7 @@ router.post("/create-course", Authcontroller, courseValidations, async (req, res
       mssg: "Unable to create the course", 
     })
 
-  }**/
+  }
 });
 
 

@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const User = require("../models/User");
 const Profile = require("../models/Profile");
 const uploader = require("../middlewares/uploader");
+//const { validator } = require("../middlewares/validation");
+//const { courseValidations } = require("../services/course-validator");
+
 
 //Usercontroller functions
 
@@ -13,6 +17,7 @@ const {
   CheckRole,
 } = require("../controllers/author");
 const { DOMAIN } = require("../config");
+const Course = require("../models/Course");
 
 //Authors Registration route
 router.post("/register", async (req, res) => {
@@ -69,5 +74,33 @@ router.post(
     }
   }
 );
+
+/**
+ * @description To create a new course by the authenticated user
+ * @api /api/user/create-course
+ * @access Private
+ * @type POST request
+ */
+
+ router.post("/create-course", Authcontroller, courseValidations, validator, async (req, res) => {
+  try {
+    //create a new course
+    let { body } = req;
+    let course = new Course({
+      author: req.user._id,
+      ...body, 
+    })
+    console.log("NEW_COURSE", course);
+  } catch (err) {
+    return res.status(400).json({
+      success: false, 
+      mssg: "Unable to create the course", 
+    })
+
+  }
+});
+
+
+
 
 module.exports = router;
