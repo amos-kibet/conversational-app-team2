@@ -19,7 +19,7 @@ such as WhatsApp, Telegram, Messenger or our very own web platform.
 - Mirror of chat(bot) conversations with a user and the ability to take over from the bot
   and have direct chat with a participant and to guide the participants to parts of the application.
     
-# User Stories or Use Cases #
+# User Stories #
 
 - as non-registered user, I can register a new account with the site
 - as a user, I can log in to the site
