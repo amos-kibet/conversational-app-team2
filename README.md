@@ -18,14 +18,23 @@ such as WhatsApp, Telegram, Messenger or our very own web platform.
   Conversational system.  
 - Mirror of chat(bot) conversations with a user and the ability to take over from the bot
   and have direct chat with a participant and to guide the participants to parts of the application.
+    
+# User Stories or Use Cases #
 
-# Techonologies used
+as non-registered user, I can register a new account with the site
+as a user, I can log in to the site
+as a user, I can open my personal dashboard
+as a user, I can view and search all courese in the course shop
+as a user, I can add courses to my dashboard
+as a user, I can delete courses from my dashboard
 
-Our application is built upon different technologies which currently include:
+# Techonologies used #
 
-- Frontend - Javascript/React
-- Backend - Nodejs/Express
-- Hosting - Cloud run (GCP)
+Our application uses the MERN stack:
+
+- Frontend - React
+- Backend -  Nodejs/Express
+- Database - MongoDB
 
 # Contributing to this app #
 
