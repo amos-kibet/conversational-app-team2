@@ -21,12 +21,12 @@ such as WhatsApp, Telegram, Messenger or our very own web platform.
     
 # User Stories or Use Cases #
 
-as non-registered user, I can register a new account with the site
-as a user, I can log in to the site
-as a user, I can open my personal dashboard
-as a user, I can view and search all courese in the course shop
-as a user, I can add courses to my dashboard
-as a user, I can delete courses from my dashboard
+- as non-registered user, I can register a new account with the site
+- as a user, I can log in to the site
+- as a user, I can open my personal dashboard
+- as a user, I can view and search all courese in the course shop
+- as a user, I can add courses to my dashboard
+- as a user, I can delete courses from my dashboard
 
 # Techonologies used #
 
