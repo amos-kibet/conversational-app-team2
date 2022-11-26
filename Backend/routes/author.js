@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+//const User = require("../models/User");
 const Profile = require("../models/Profile");
 const uploader = require("../middlewares/uploader");
-//const { validator } = require("../middlewares/validation");
-//const { courseValidations } = require("../services/course-validator");
+const validator  = require("../middlewares/validation");
+const courseValidations = require("../services/repo/course-validator");
 
 
 //Usercontroller functions
