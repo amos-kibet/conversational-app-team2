@@ -6,13 +6,13 @@ const filename = (req, file, next) => {
   next(null, `img.${Date.now()} ${ext}`);
 };
 
-const destination = (req, file, next) => {
+const imagePath = (req, file, next) => {
   next(null, `${__dirname}/../uploads`);
 };
 
 const upload = multer({
   storage: multer.diskStorage({
-    destination,
+    imagePath,
     filename,
   }),
 });
