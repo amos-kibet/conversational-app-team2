@@ -14,19 +14,34 @@ const CourseSchema = new Schema({
     type: String,
     required: true 
   },
-  author: {
-      type: Schema.Types.ObjectId,
-      ref: "users",
-    },
-  name: {
-    type: String,
-    required: false,
+  likes: {
+    type: Number,
+    default: 0
   },
+  comments: [
+    {
+      text: {
+        type: String,
+        required: true 
+      },
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users"
+      },
+
+    }
+  ],
   category: {
     type: String,
-    required: false,
+    required: false
   },
-});
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "users"
+  },
+},
+{ timestamps: true }
+);
 
 CourseSchema.plugin(Paginator);
 const Course = model("courses", CourseSchema);
