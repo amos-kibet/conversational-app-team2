@@ -14,6 +14,10 @@ const CourseSchema = new Schema({
     type: String,
     required: true 
   },
+  slug: {
+    type: String,
+    required: true, 
+  },
   likes: {
     type: Number,
     default: 0
