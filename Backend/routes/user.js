@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 const Profile = require("../models/Profile");
 const uploader = require("../middlewares/uploader");
+const slugGenerator = require("../functions/slug-generator");
 const validator = require("../middlewares/validation");
 const courseValidations  = require("../services/repo/course-validator");
 //Usercontroller functions
@@ -188,8 +189,18 @@ router.post("/create-course", Authcontroller, courseValidations, validator, asyn
     let course = new Course({
       author: req.user._id,
       ...body, 
-    })
-    console.log("NEW_COURSE", course);
+      slug: slugGenerator(body.title),
+    });
+    await course.save();
+    console.log("COURSE_ONE", course);
+    return res
+    .status(201)
+    .json({
+        course, 
+        success: true,
+        mssg: "Your course is published.",
+
+    });
   } catch (err) {
     return res.status(400).json({
       success: false, 
