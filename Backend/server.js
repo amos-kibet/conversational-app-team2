@@ -1,4 +1,5 @@
 require("dotenv").config();
+const cors = require("cors");
 const express = require("express");
 const adminRouter = require("./routes/admin");
 const userRouter = require("./routes/user");
@@ -7,6 +8,7 @@ const passport = require("passport");
 const { join } = require("path");
 const { connect } = require("mongoose");
 const { success, error } = require("consola");
+const cors = require("cors");
 
 //app constants
 const { DB, PORT } = require("./config");
@@ -15,6 +17,8 @@ const { DB, PORT } = require("./config");
 const app = express();
 
 //Middlewares
+app.use(cors());
+
 app.use(passport.initialize());
 app.use(express.json());
 app.use(
