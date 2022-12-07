@@ -34,10 +34,8 @@ export default class Register extends React.Component {
           "[REGISTER] res_payload values: " + Object.keys(Object.values(res)[0])
         );
         swal({
-          // FIXME: rm type, it is deprecated
           text: res.data.mssg,
           icon: "success",
-          type: "success",
         });
         this.props.history.push("/");
       })
@@ -46,8 +44,6 @@ export default class Register extends React.Component {
         swal({
           text: err.response.data.mssg,
           icon: "error",
-          // FIXME: rm type, it is deprecated
-          type: "error",
         });
       });
   };
