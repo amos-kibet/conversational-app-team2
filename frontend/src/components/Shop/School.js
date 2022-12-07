@@ -101,7 +101,7 @@ export default class Shop extends Component {
       })
       .catch((err) => {
         swal({
-          text: err.response.data.errorMessage,
+          text: err.response.data.mssg,
           icon: "error",
           type: "error",
         });
