@@ -37,12 +37,12 @@ const Usercontroller = async (userPayload, role, res) => {
     //Get the hashed password
     const password = await bcrypt.hash(userPayload.password, 12);
     //Create a user
-    const newUser = new User({
+    const User = new User({
       ...userPayload,
       password: password,
       role: role,
     });
-    await newUser.save();
+    await User.save();
     return res.status(201).json({
       mssg: "You've been successfully registered. Please Login.",
       success: true,
