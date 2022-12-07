@@ -70,7 +70,7 @@ export default class Shop extends Component {
   handleCourseAdd = (course) => {
     axios
       .post(
-        global.config.i18n.url + "dashboard/add",
+        baseUrl + "dashboard/add",
         {
           usr_id: this.state.usr_id,
           course: course,
@@ -93,7 +93,6 @@ export default class Shop extends Component {
         swal({
           text: err.response.data.errorMessage,
           icon: "error",
-          type: "error",
         });
       });
   };
@@ -133,7 +132,6 @@ export default class Shop extends Component {
         swal({
           text: err.response.data.errorMessage,
           icon: "error",
-          type: "error",
         });
         this.setState({ loading: false, pages: 0 }, () => {});
       });
