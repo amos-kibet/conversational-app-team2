@@ -114,6 +114,7 @@ export default class Shop extends Component {
           ) {
             data.push(course);
           }
+          return course;
         });
 
         this.setState({ loading: false, courses: data, pages: res.data.pages });
