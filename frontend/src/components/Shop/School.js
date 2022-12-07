@@ -103,7 +103,6 @@ export default class Shop extends Component {
         swal({
           text: err.response.data.mssg,
           icon: "error",
-          type: "error",
         });
         this.setState({ loading: false, products: [], pages: 0 }, () => {});
       });
