@@ -20,6 +20,8 @@ export default class Login extends React.Component {
   login = () => {
     const pwd = bcrypt.hashSync(this.state.password, salt);
 
+    // FIXME: Validate user payload for correctness & uniqueness before proceeeding
+
     axios
       .post(baseUrl + "/user/login", {
         username: this.state.username,
@@ -52,7 +54,7 @@ export default class Login extends React.Component {
 
         <div>
           <TextField
-            id="standard-basic"
+            id="username"
             type="text"
             autoComplete="off"
             name="username"
@@ -64,7 +66,7 @@ export default class Login extends React.Component {
           <br />
           <br />
           <TextField
-            id="standard-basic"
+            id="password"
             type="password"
             autoComplete="off"
             name="password"
