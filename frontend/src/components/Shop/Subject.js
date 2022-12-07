@@ -76,7 +76,7 @@ export default class Shop extends Component {
   getSubject = () => {
     this.setState({ loading: true });
     const params = new URLSearchParams(this.props.location.search);
-    const url = baseUrl + "shop/subject?school=" + params.get("school");
+    const url = baseUrl + "/shop/subject?school=" + params.get("school");
     axios
       .get(url, {
         headers: {
