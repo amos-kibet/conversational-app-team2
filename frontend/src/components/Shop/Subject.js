@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import baseUrl from "../../config";
+import baseUrl from "../../config.js";
 import {
   Button,
   TextField,
