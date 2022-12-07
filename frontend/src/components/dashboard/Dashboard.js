@@ -82,14 +82,12 @@ export default class Shop extends Component {
         swal({
           text: res.data.title,
           icon: "success",
-          type: "success",
         });
       })
       .catch((err) => {
         swal({
           text: err.response.data.errorMessage,
           icon: "error",
-          type: "error",
         });
       });
   };
@@ -124,7 +122,6 @@ export default class Shop extends Component {
         swal({
           text: err.response.data.errorMessage,
           icon: "error",
-          type: "error",
         });
         this.setState({ loading: false, products: [], pages: 0 }, () => {});
       });
