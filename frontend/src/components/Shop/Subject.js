@@ -94,6 +94,7 @@ export default class Shop extends Component {
           ) {
             data.push(subject);
           }
+          return subject;
         });
         this.setState({
           loading: false,
