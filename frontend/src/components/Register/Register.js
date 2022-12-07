@@ -1,57 +1,66 @@
-import React from 'react';
-import baseUrl from '../../config.js';
-import swal from 'sweetalert';
-import '../../config';
-import { Button, TextField, Link } from '@material-ui/core';
-import axios from 'axios';
- 
+import React from "react";
+import baseUrl from "../../config.js";
+import swal from "sweetalert";
+import "../../config";
+import { Button, TextField, Link } from "@material-ui/core";
+import axios from "axios";
 
 export default class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name:'',
-      email:'',
-      username: '',
-      password: '',
-      confirm_password: ''
+      name: "",
+      email: "",
+      username: "",
+      password: "",
+      confirm_password: "",
     };
   }
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   register = () => {
-
-    axios.post(baseUrl + '/user/register', {
-      name: this.state.name,
-      email: this.state.email,
-      username: this.state.username,
-      password: this.state.password,
-    }).then((res) => {
-      swal({
-        text: res.data.title,
-        icon: "success",
-        type: "success"
+    axios
+      .post(baseUrl + "/user/register", {
+        name: this.state.name,
+        email: this.state.email,
+        username: this.state.username,
+        password: this.state.password,
+      })
+      .then((res) => {
+        // console.log("[REGISTER] res_payload keys: " + Object.keys(res)[0]);
+        // console.log("\n");
+        console.log(
+          "[REGISTER] res_payload values: " + Object.keys(Object.values(res)[0])
+        );
+        swal({
+          // FIXME: rm type, it is deprecated
+          text: res.data.mssg,
+          icon: "success",
+          type: "success",
+        });
+        this.props.history.push("/");
+      })
+      .catch((err) => {
+        // console.log("[REGISTER] err: " + Object.keys(err.response));
+        swal({
+          text: err.response.data.mssg,
+          icon: "error",
+          // FIXME: rm type, it is deprecated
+          type: "error",
+        });
       });
-      this.props.history.push('/');
-    }).catch((err) => {
-      swal({
-        text: err.response.data.errorMessage,
-        icon: "error",
-        type: "error"
-      });
-    });
-  }
+  };
 
   render() {
     return (
-      <div style={{ marginTop: '200px' }}>
+      <div style={{ marginTop: "200px" }}>
         <div>
           <h2>Register</h2>
         </div>
 
         <div>
-        <TextField
+          <TextField
             id="standard-basic"
             type="text"
             autoComplete="off"
@@ -61,7 +70,8 @@ export default class Register extends React.Component {
             placeholder="Name"
             required
           />
-          <br /><br />
+          <br />
+          <br />
           <TextField
             id="standard-basic"
             type="text"
@@ -72,7 +82,8 @@ export default class Register extends React.Component {
             placeholder="User Name"
             required
           />
-          <br /><br />
+          <br />
+          <br />
           <TextField
             id="standard-basic"
             type="email"
@@ -83,7 +94,8 @@ export default class Register extends React.Component {
             placeholder="Email"
             required
           />
-          <br /><br />
+          <br />
+          <br />
           <TextField
             id="standard-basic"
             type="password"
@@ -94,7 +106,8 @@ export default class Register extends React.Component {
             placeholder="Password"
             required
           />
-          <br /><br />
+          <br />
+          <br />
           <TextField
             id="standard-basic"
             type="password"
@@ -104,22 +117,21 @@ export default class Register extends React.Component {
             onChange={this.onChange}
             placeholder="Confirm Password"
             required
-          /> 
-          <br /><br />
-
+          />
+          <br />
+          <br />
           <Button
             className="button_style"
             variant="contained"
             color="primary"
             size="small"
-            disabled={this.state.username === '' && this.state.password === ''}
+            disabled={this.state.username === "" && this.state.password === ""}
             onClick={this.register}
           >
             Register
-          </Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <Link href="/">
-            Login
-          </Link>
+          </Button>{" "}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <Link href="/">Login</Link>
         </div>
       </div>
     );
