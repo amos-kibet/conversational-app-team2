@@ -20,6 +20,8 @@ export default class Register extends React.Component {
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   register = () => {
+    // FIXME: Validate user payload for correctness & uniqueness before proceeeding
+
     axios
       .post(baseUrl + "/user/register", {
         name: this.state.name,
@@ -57,7 +59,7 @@ export default class Register extends React.Component {
 
         <div>
           <TextField
-            id="standard-basic"
+            id="name"
             type="text"
             autoComplete="off"
             name="name"
@@ -69,7 +71,7 @@ export default class Register extends React.Component {
           <br />
           <br />
           <TextField
-            id="standard-basic"
+            id="username"
             type="text"
             autoComplete="off"
             name="username"
@@ -81,7 +83,7 @@ export default class Register extends React.Component {
           <br />
           <br />
           <TextField
-            id="standard-basic"
+            id="email"
             type="email"
             autoComplete="off"
             name="email"
@@ -93,7 +95,7 @@ export default class Register extends React.Component {
           <br />
           <br />
           <TextField
-            id="standard-basic"
+            id="password"
             type="password"
             autoComplete="off"
             name="password"
@@ -105,7 +107,7 @@ export default class Register extends React.Component {
           <br />
           <br />
           <TextField
-            id="standard-basic"
+            id="confirm_password"
             type="password"
             autoComplete="off"
             name="confirm_password"
