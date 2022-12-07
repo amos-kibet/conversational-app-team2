@@ -150,7 +150,7 @@ export default class Shop extends Component {
         <TableContainer>
           <form>
             <TextField
-              id="standard-basic"
+              id="search"
               type="search"
               autoComplete="off"
               name="search"
