@@ -91,7 +91,7 @@ export default class Shop extends Component {
       })
       .catch((err) => {
         swal({
-          text: err.response.data.errorMessage,
+          text: err.response.data.mssg,
           icon: "error",
         });
       });
@@ -130,7 +130,7 @@ export default class Shop extends Component {
       })
       .catch((err) => {
         swal({
-          text: err.response.data.errorMessage,
+          text: err.response.data.mssg,
           icon: "error",
         });
         this.setState({ loading: false, pages: 0 }, () => {});
