@@ -1,6 +1,8 @@
 const { Schema, model } = require("mongoose");
 const { hash } = require("bcryptjs");
 const { pick } = require("lodash");
+const { sign } = require("jsonwebtoken");
+const { SECRET } = require("../config/index")
 
 
 const UserSchema = new Schema(
@@ -48,8 +50,19 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
+
 UserSchema.methods.getUserInfo = function() {
   return pick(this, [ "_id", "username", "email", "name", ])
+}
+
+UserSchema.methods.generateJWT = async function() {
+  let payload = {
+    username: this.username,
+    email: this.email,
+    name: this.name,
+    id: this._id,
+  };
+  return await sign(payload, SECRET, {expiresIn: "1 day"}); 
 }
 
 const User = model("users", UserSchema);
