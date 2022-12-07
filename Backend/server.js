@@ -8,7 +8,6 @@ const passport = require("passport");
 const { join } = require("path");
 const { connect } = require("mongoose");
 const { success, error } = require("consola");
-const cors = require("cors");
 
 //app constants
 const { DB, PORT } = require("./config");
