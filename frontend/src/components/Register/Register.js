@@ -30,9 +30,9 @@ export default class Register extends React.Component {
       .then((res) => {
         // console.log("[REGISTER] res_payload keys: " + Object.keys(res)[0]);
         // console.log("\n");
-        console.log(
-          "[REGISTER] res_payload values: " + Object.keys(Object.values(res)[0])
-        );
+        // console.log(
+        //   "[REGISTER] res_payload values: " + Object.keys(Object.values(res)[0])
+        // );
         swal({
           text: res.data.mssg,
           icon: "success",
