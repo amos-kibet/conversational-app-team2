@@ -197,7 +197,7 @@ export default class Shop extends Component {
           <DialogTitle id="alert-dialog-title">Add to Dashboard</DialogTitle>
           <DialogContent>
             <TextField
-              id="standard-basic"
+              id="school-code"
               type="text"
               autoComplete="off"
               name="name"
@@ -208,7 +208,7 @@ export default class Shop extends Component {
             />
             <br />
             <TextField
-              id="standard-basic"
+              id="desc"
               type="text"
               autoComplete="off"
               name="desc"
@@ -220,7 +220,7 @@ export default class Shop extends Component {
             <br />
             <form>
               <TextField
-                id="standard-basic"
+                id="search"
                 type="text"
                 autoComplete="off"
                 name="search"
@@ -232,7 +232,7 @@ export default class Shop extends Component {
             </form>
             <br />
             <TextField
-              id="standard-basic"
+              id="discount"
               type="number"
               autoComplete="off"
               name="discount"
@@ -256,7 +256,7 @@ export default class Shop extends Component {
           <DialogTitle id="alert-dialog-title">Add Product</DialogTitle>
           <DialogContent>
             <TextField
-              id="standard-basic"
+              id="product-name"
               type="text"
               autoComplete="off"
               name="name"
@@ -267,7 +267,7 @@ export default class Shop extends Component {
             />
             <br />
             <TextField
-              id="standard-basic"
+              id="another-desc"
               type="text"
               autoComplete="off"
               name="desc"
@@ -278,7 +278,7 @@ export default class Shop extends Component {
             />
             <br />
             <TextField
-              id="standard-basic"
+              id="price"
               type="number"
               autoComplete="off"
               name="price"
@@ -289,7 +289,7 @@ export default class Shop extends Component {
             />
             <br />
             <TextField
-              id="standard-basic"
+              id="another-discount"
               type="number"
               autoComplete="off"
               name="discount"
@@ -327,7 +327,7 @@ export default class Shop extends Component {
 
         <TableContainer>
           <TextField
-            id="standard-basic"
+            id="another-search"
             type="search"
             autoComplete="off"
             name="search"
