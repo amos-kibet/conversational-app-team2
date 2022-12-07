@@ -80,7 +80,7 @@ export default class Shop extends Component {
       )
       .then((res) => {
         swal({
-          text: res.data.title,
+          text: res.data.mssg,
           icon: "success",
         });
       })
