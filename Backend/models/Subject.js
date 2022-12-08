@@ -1,11 +1,11 @@
 const { Schema, model } = require("mongoose");
 const Paginator = require("mongoose-paginate-v2");
 
-const CourseSchema = new Schema(
+const SubjectSchema = new Schema(
   {
-    usr_id: {
+    course_id: {
       type: Schema.Types.ObjectId,
-      ref: "users",
+      ref: "course",
     },
     token: {
       type: String,
@@ -16,30 +16,6 @@ const CourseSchema = new Schema(
       required: true,
     },
     code: {
-      type: String,
-      required: true,
-    },
-    registrationNumber: {
-      type: String,
-      required: true,
-    },
-    instructors: {
-      type: Array,
-      required: true,
-    },
-    unit: {
-      type: String,
-      required: true,
-    },
-    location: {
-      type: String,
-      required: true,
-    },
-    type: {
-      type: String,
-      required: true,
-    },
-    time: {
       type: String,
       required: true,
     },
@@ -71,7 +47,7 @@ const CourseSchema = new Schema(
       type: String,
       required: false,
     },
-    courses: {
+    subjects: {
       type: Array,
       required: true,
     },
@@ -87,7 +63,7 @@ const CourseSchema = new Schema(
   { timestamps: true }
 );
 
-CourseSchema.plugin(Paginator);
-const Course = model("courses", CourseSchema);
+SubjectSchema.plugin(Paginator);
+const Subject = model("subjects", SubjectSchema);
 
-module.exports = Course;
+module.exports = Subject;
