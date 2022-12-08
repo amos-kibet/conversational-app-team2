@@ -9,6 +9,7 @@ const { join } = require("path");
 const { connect } = require("mongoose");
 const { success, error } = require("consola");
 
+
 //app constants
 const { DB, PORT } = require("./config");
 
@@ -17,7 +18,6 @@ const app = express();
 
 //Middlewares
 app.use(cors());
-
 app.use(passport.initialize());
 app.use(express.json());
 app.use(

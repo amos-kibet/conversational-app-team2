@@ -91,7 +91,13 @@ router.get("/my-profile", Authcontroller, async (req, res) => {
         mssg: "Your profile does not exist.",
       });
     }
- });
+ } catch (err) {
+    return res.status(400).json({
+        success: false,
+        mssg: "Unable to get your profile.",
+    });
+ }
+});
     
  /**
  * @description To update the authenticated user's profile
