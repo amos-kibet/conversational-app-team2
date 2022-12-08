@@ -63,11 +63,13 @@ const Usercontroller = async (userPayload, role, res) => {
 
 const Logincontroller = async (userPayload, role, res) => {
   try {
+    let { password } = userPayload;
     //Check if username is stored in the database
 
     const user = await repo.username(User, userPayload.username);
     console.log("[USER_LOGIN_CONTROLLER] 1: " + Object.keys(userPayload));
     console.log("[USER_LOGIN_CONTROLLER] 2: " + userPayload.username);
+    console.log("[USER_LOGIN_CONTROLLER] 3: " + userPayload.password);
     if (!user) {
       return res.status(404).json({
         mssg: "Username is not found. Invalid login credentials.",
@@ -83,7 +85,8 @@ const Logincontroller = async (userPayload, role, res) => {
     }
     //The above logic means user is existing. And user is trying to signin from the correct portal
     //Now check for the password
-    let isMatch = await bcrypt.compare(userPayload.password, user.password);
+    let isMatch = await bcrypt.compare(password, user.password);
+    console.log("[USER_LOGIN_CONTROLLER] 4: " + user.password);
     if (isMatch) {
       //Sign in the token and issue it to the user
       let token = jwt.sign(
@@ -114,7 +117,7 @@ const Logincontroller = async (userPayload, role, res) => {
         success: false,
       });
     }
-  } catch (error) {
+   } catch (error) {
     console.log("[USER_LOGIN_CONTROLLER] 3: " + error.message);
     return res.status(500).json({
       success: false,

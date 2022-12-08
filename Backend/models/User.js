@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const { hash } = require("bcryptjs");
+//const { hash } = require("bcryptjs");
 const { pick } = require("lodash");
 const { sign } = require("jsonwebtoken");
 const { SECRET } = require("../config/index")
@@ -43,12 +43,12 @@ const UserSchema = new Schema(
 );
 
 //Define functions which are relative to the userSchema
-UserSchema.pre("save", async function (next) {
+/**UserSchema.pre("save", async function (next) {
   let user = this;
   if (!user.isModified("password")) return next();
-  user.password = await hash(user.password, 10);
+  user.password = await hash(user.password, 12);
   next();
-});
+});**/
 
 
 UserSchema.methods.getUserInfo = function() {
