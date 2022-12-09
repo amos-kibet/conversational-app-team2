@@ -66,7 +66,7 @@ export default class Shop extends Component {
   handleCourseDelete = (course) => {
     axios
       .post(
-        baseUrl + "/dashboard/delete",
+        baseUrl + "/dashboard/delete/",
         {
           usr_id: this.state.usr_id,
           course: course,
@@ -94,7 +94,7 @@ export default class Shop extends Component {
 
   getCourses = () => {
     this.setState({ loading: true });
-    const url = baseUrl + "/dashboard";
+    const url = baseUrl + "/dashboard/";
     axios
       .get(url, {
         headers: {
@@ -149,7 +149,7 @@ export default class Shop extends Component {
   };
 
   changeToShop = () => {
-    this.props.history.push("/shop/school");
+    this.props.history.push("/program/school");
   };
   handleProductOpen = () => {
     this.setState({
