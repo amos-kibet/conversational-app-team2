@@ -77,7 +77,7 @@ export default class Shop extends Component {
   getSchool = () => {
     this.setState({ loading: true });
     axios
-      .get(baseUrl + "shop/school", {
+      .get(baseUrl + "/program/school/", {
         headers: {
           token: this.state.token,
         },
@@ -127,7 +127,7 @@ export default class Shop extends Component {
       <div>
         {this.state.loading && <LinearProgress size={40} />}
         <div>
-          <h2>School Shop</h2>
+          <h2>School</h2>
           <Button
             className="button_style"
             variant="contained"
@@ -169,7 +169,7 @@ export default class Shop extends Component {
             {this.clear}
             <TableBody class="TableBody">
               {this.state.schools.map((row) => {
-                const url = "/shop/subject?school=" + row.code;
+                const url = "/program/subject?school=" + row.code;
                 return (
                   <TableRow key={row.name}>
                     <TableCell align="center">

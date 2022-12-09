@@ -76,7 +76,7 @@ export default class Shop extends Component {
   getSubject = () => {
     this.setState({ loading: true });
     const params = new URLSearchParams(this.props.location.search);
-    const url = baseUrl + "/shop/subject?school=" + params.get("school");
+    const url = baseUrl + "/program/subject?school=" + params.get("school");
     axios
       .get(url, {
         headers: {
@@ -132,7 +132,7 @@ export default class Shop extends Component {
       <div>
         {this.state.loading && <LinearProgress size={40} />}
         <div>
-          <h2>Subject Shop</h2>
+          <h2>Subject</h2>
           <Button
             className="button_style"
             variant="contained"
@@ -175,7 +175,7 @@ export default class Shop extends Component {
             <TableBody class="TableBody">
               {this.state.subjects.map((row) => {
                 const url =
-                  "/shop/course?" +
+                  "/program/course?" +
                   "subject=" +
                   row.code +
                   "&school=" +

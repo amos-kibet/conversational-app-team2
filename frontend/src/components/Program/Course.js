@@ -70,7 +70,7 @@ export default class Shop extends Component {
   handleCourseAdd = (course) => {
     axios
       .post(
-        baseUrl + "dashboard/add",
+        baseUrl + "dashboard/add/",
         {
           usr_id: this.state.usr_id,
           course: course,
@@ -102,7 +102,7 @@ export default class Shop extends Component {
     const params = new URLSearchParams(this.props.location.search);
     const url =
       baseUrl +
-      "shop/course?school=" +
+      "/program/course?school=" +
       params.get("school") +
       "&subject=" +
       params.get("subject");
@@ -167,7 +167,7 @@ export default class Shop extends Component {
       <div>
         {this.state.loading && <LinearProgress size={40} />}
         <div>
-          <h2>Course Shop</h2>
+          <h2>Course</h2>
           <Button
             className="button_style"
             variant="contained"
