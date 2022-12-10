@@ -1,8 +1,8 @@
 const { check } = require("express-validator");
 
-const title = check("title", "Title is required.").not().isEmpty();
-const content = check("content", "Content is required.").not().isEmpty(); 
+const name = check("name", "Name is required.").not().isEmpty();
+const fileName = check("fileName", "Filename is required.").not().isEmpty(); 
 
-const courseValidations = [ title, content ];
+const courseValidations = [ name, fileName ];
 
 module.exports = courseValidations;
