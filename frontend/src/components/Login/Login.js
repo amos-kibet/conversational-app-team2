@@ -3,8 +3,6 @@ import baseUrl from "../../config.js";
 import swal from "sweetalert";
 import { Button, TextField, Link } from "@material-ui/core";
 import axios from "axios";
-import bcrypt from "bcryptjs";
-var salt = bcrypt.genSaltSync(10);
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -31,7 +29,7 @@ export default class Login extends React.Component {
         console.log("[LOGIN] res_payload: " + Object.keys(res));
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user_id", res.data.id);
-        this.props.history.push("/program/school");
+        this.props.history.push("/dashboard");
       })
       .catch((err) => {
         // console.log("[LOGIN] err: " + err.response.data.mssg);

@@ -117,7 +117,7 @@ const Logincontroller = async (userPayload, role, res) => {
         success: false,
       });
     }
-   } catch (error) {
+  } catch (error) {
     console.log("[USER_LOGIN_CONTROLLER] 3: " + error.message);
     return res.status(500).json({
       success: false,

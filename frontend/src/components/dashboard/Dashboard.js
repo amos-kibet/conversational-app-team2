@@ -94,7 +94,7 @@ export default class Shop extends Component {
 
   getCourses = () => {
     this.setState({ loading: true });
-    const url = baseUrl + "/dashboard/";
+    const url = baseUrl + "/product/courses/";
     axios
       .get(url, {
         headers: {
@@ -168,7 +168,7 @@ export default class Shop extends Component {
         {this.state.loading && <LinearProgress size={40} />}
         <div>
           <h2>Dashboard</h2>
-          <Button
+          {/* <Button
             className="button_style"
             variant="contained"
             color="primary"
@@ -176,7 +176,7 @@ export default class Shop extends Component {
             onClick={this.changeToShop}
           >
             Shop
-          </Button>
+          </Button> */}
           <Button
             className="button_style"
             variant="contained"
@@ -253,7 +253,7 @@ export default class Shop extends Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">Add Product</DialogTitle>
+          <DialogTitle id="alert-dialog-title">Add Course</DialogTitle>
           <DialogContent>
             <TextField
               id="product-name"
@@ -318,7 +318,7 @@ export default class Shop extends Component {
               color="primary"
               autoFocus
             >
-              Add Product
+              Add Course
             </Button>
           </DialogActions>
         </Dialog>

@@ -19,7 +19,7 @@ ReactDOM.render(
     <Switch>
       <Route exact path="/" component={Login} />
       <Route exact path="/register" component={Register} />
-      <Route path="/program/school" component={School} />
+      {/* <Route path="/program/school" component={School} /> */}
       <Route path="/program/subject" component={Subject} />
       <Route path="/program/course" component={Course} />
       <Route path="/dashboard" component={Dashboard} />

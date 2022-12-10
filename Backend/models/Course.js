@@ -3,7 +3,7 @@ const Paginator = require("mongoose-paginate-v2");
 
 const CourseSchema = new Schema(
   {
-    usr_id: {
+    user_id: {
       type: Schema.Types.ObjectId,
       ref: "users",
     },
