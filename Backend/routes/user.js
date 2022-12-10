@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Profile = require("../models/Profile");
+const Dashboard = require("../models/Dashboard");
 const uploader = require("../middlewares/uploader");
 const slugGenerator = require("../functions/slug-generator");
 const validator = require("../middlewares/validation");
@@ -176,9 +177,9 @@ router.post("/create-course", Authcontroller, courseValidations, validator, asyn
     
     let { body } = req;
     let course = new Course({
-      author: req.user._id,
+      usr_id: req.user._id,
       ...body, 
-      slug: slugGenerator(body.title),
+      slug: slugGenerator(body.fileName),
     });
     await course.save();
     console.log("COURSE_ONE", course);
@@ -197,5 +198,63 @@ router.post("/create-course", Authcontroller, courseValidations, validator, asyn
     });
   }
 });
+
+/**
+ * @description To create dashboard of the authenticated user
+ * @api /api/user/dashboard
+ * @access Private
+ * @type POST <multipart-form> request
+ */
+
+router.post("/dashboard", Authcontroller), async (req, res) => {
+  try{
+    let { body } = req;
+    let dashboard = new Dashboard ({
+      usr_id: user._id,
+      ...body,
+    });
+    console.log(USER_DASHBOARD,dashboard)
+    await dashboard.save();
+    return res.status(200).json({
+      mssg: "Your dashboard has been created.",
+      success: true, 
+    });
+  }catch (err){
+    return res.status(400).json({
+      mssg: "We are not able to create your dashboard.",
+      success: false,
+    })
+
+  }
+}
+
+/**
+ * @description To create dashboard of the authenticated user
+ * @api /api/user/dashboard
+ * @access Private
+ * @type GET request
+ */
+
+router.get("/dashboard", Authcontroller, async (req, res) => {
+  try{
+    let dashboard = await Dashboard.findOne({
+      usr_id: user._id.req.user,  
+    }).populate("usr_id", "name email username");
+    if(!dashboard) {
+      return res.status(404).json({
+        success: false,
+        mssg: "Your dashboard does not exist.", 
+      });
+    }
+
+  } catch (err) {
+    return res.status(400).json({
+      success: false,
+      mssg: "Unable to get your dashboard.", 
+    });
+  }
+});
+
+
 
 module.exports = router;
