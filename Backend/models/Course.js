@@ -15,6 +15,10 @@ const CourseSchema = new Schema(
       type: String,
       required: true,
     },
+    fileName: {
+      type: String,
+      required: true,
+    },
     code: {
       type: String,
       required: true,
@@ -56,10 +60,6 @@ const CourseSchema = new Schema(
       required: true,
     },
     file: {
-      type: String,
-      required: true,
-    },
-    fileName: {
       type: String,
       required: true,
     },
