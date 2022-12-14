@@ -3,11 +3,13 @@ const router = express.Router();
 const User = require("../models/User");
 const Course = require("../models/User");
 const Profile = require("../models/Profile");
+const Course = require("../models/Course");
 const Dashboard = require("../models/Dashboard");
 const uploader = require("../middlewares/uploader");
 const slugGenerator = require("../functions/slug-generator");
 const validator = require("../middlewares/validation");
 const courseValidations = require("../services/repo/course-validator");
+
 //Usercontroller functions
 
 const {
@@ -183,14 +185,13 @@ router.post(
   async (req, res) => {
     try {
       //create a new course
-
       let { body } = req;
       let course = new Course({
         usr_id: req.user._id,
         ...body,
         slug: slugGenerator(body.fileName),
       });
-      await course.save();
+      course.save();
       console.log("COURSE_ONE", course);
       return res.status(201).json({
         course,
@@ -198,9 +199,10 @@ router.post(
         mssg: "Your course is published.",
       });
     } catch (err) {
+      console.log("Show error details", course);
       return res.status(400).json({
         success: false,
-        mssg: "Unable to get your profile.",
+        mssg: "Unable to create your course.",
       });
     }
   }

@@ -7,15 +7,23 @@ const CourseSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "users",
     },
+    courses: {
+      type: Array,
+      required: true,
+    },
+    fileName: {
+      type: String,
+      required: true,
+    },
+    slug: {
+      type: String,
+      required: true, 
+    },
     token: {
       type: String,
       required: false,
     },
     name: {
-      type: String,
-      required: true,
-    },
-    fileName: {
       type: String,
       required: true,
     },
@@ -33,35 +41,35 @@ const CourseSchema = new Schema(
     },
     unit: {
       type: String,
-      required: true,
+      required: false,
     },
     location: {
       type: String,
-      required: true,
+      required: false,
     },
-    type: {
-      type: String,
-      required: true,
-    },
-    time: {
-      type: String,
-      required: true,
-    },
+    // type: {
+    //   type: String,
+    //   required: true,
+    // },
+    // time: {
+    //   type: String,
+    //   required: true,
+    // },
     desc: {
       type: String,
-      required: true,
+      required: false,
     },
     price: {
       type: String,
-      required: true,
+      required: false,
     },
     discount: {
       type: String,
-      required: true,
+      required: false,
     },
     file: {
       type: String,
-      required: true,
+      required: false,
     },
     page: {
       type: Number,
@@ -70,10 +78,6 @@ const CourseSchema = new Schema(
     search: {
       type: String,
       required: false,
-    },
-    courses: {
-      type: Array,
-      required: true,
     },
     pages: {
       type: Number,
