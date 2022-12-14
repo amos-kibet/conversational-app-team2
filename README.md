@@ -17,7 +17,7 @@ such as WhatsApp, Telegram, Messenger or our very own web platform.
 - Mirror of chat(bot) conversations with a user and the ability to take over from the bot
   and have direct chat with a participant and to guide the participants to parts of the application.
 
-# User Stories
+## User Stories
 
 - as non-registered user, I can register a new account with the site
 - as a user, I can log in to the site
@@ -26,9 +26,9 @@ such as WhatsApp, Telegram, Messenger or our very own web platform.
 - as a user, I can add courses to my dashboard
 - as a user, I can delete courses from my dashboard
 
-# Specifications
+## Specifications
 
-## Backend
+### Backend
 
 - APIs to register and login a user.
 - APIs for which a logged in user can add, edit and update their courses.
@@ -36,13 +36,13 @@ such as WhatsApp, Telegram, Messenger or our very own web platform.
 - JWT token for authentication.
 - We are using an external [API](https://github.com/A1Liu/schedge) to populate our courses endpoint with data.
 
-## Frontend
+### Frontend
 
 - A simple but self-guiding UI to enable a user to register and login.
 - UI for course management. A logged in user can add, delete and search school, subject and course by name.
 - Making HTTPS calls using Axios.
 
-# Technologies used
+## Technologies used
 
 Our application uses the MERN stack:
 
@@ -50,7 +50,7 @@ Our application uses the MERN stack:
 - Backend - Nodejs/Express
 - Database - MongoDB
 
-# Contributing to this app
+## Contributing to this app
 
 Follow the steps below:
 
@@ -77,4 +77,4 @@ Backend
 - Start the app with the command `npm start`
 - Navigate to the app on your browser with the url http://localhost:4000 or any other port number displayed on your terminal
 
-# Happy coding!
+## Happy coding!
