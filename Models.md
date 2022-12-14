@@ -1,9 +1,8 @@
-### iLearn App
+## iLearn App
 
-## Data Model
+### Data Model
 
-The application will store Users, and Courses
-
+- The application will store Users, and Courses
 - Users can have multiple Courses in their dashboard
 - Each course can have multiple information
 
