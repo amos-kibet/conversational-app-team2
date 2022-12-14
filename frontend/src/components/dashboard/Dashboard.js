@@ -66,7 +66,7 @@ export default class Shop extends Component {
   handleCourseDelete = (course) => {
     axios
       .post(
-        baseUrl + "/dashboard/delete/",
+        baseUrl + "dashboard/delete",
         {
           usr_id: this.state.usr_id,
           course: course,
@@ -80,21 +80,23 @@ export default class Shop extends Component {
       )
       .then((res) => {
         swal({
-          text: res.data.mssg,
+          text: res.data.title,
           icon: "success",
+          type: "success",
         });
       })
       .catch((err) => {
         swal({
-          text: err.response.data.mssg,
+          text: err.response.data.errorMessage,
           icon: "error",
+          type: "error",
         });
       });
   };
 
   getCourses = () => {
     this.setState({ loading: true });
-    const url = baseUrl + "/product/courses/";
+    const url = baseUrl + "dashboard";
     axios
       .get(url, {
         headers: {
@@ -114,15 +116,15 @@ export default class Shop extends Component {
           ) {
             data.push(course);
           }
-          return course;
         });
 
         this.setState({ loading: false, courses: data, pages: res.data.pages });
       })
       .catch((err) => {
         swal({
-          text: err.response.data.mssg,
+          text: err.response.data.errorMessage,
           icon: "error",
+          type: "error",
         });
         this.setState({ loading: false, products: [], pages: 0 }, () => {});
       });
@@ -149,7 +151,7 @@ export default class Shop extends Component {
   };
 
   changeToShop = () => {
-    this.props.history.push("/program/school");
+    this.props.history.push("/shop/school");
   };
   handleProductOpen = () => {
     this.setState({
@@ -168,15 +170,15 @@ export default class Shop extends Component {
         {this.state.loading && <LinearProgress size={40} />}
         <div>
           <h2>Dashboard</h2>
-          {/* <Button
+          <Button
             className="button_style"
             variant="contained"
             color="primary"
             size="small"
             onClick={this.changeToShop}
           >
-            Shop
-          </Button> */}
+            Enroll
+          </Button>
           <Button
             className="button_style"
             variant="contained"
@@ -197,7 +199,7 @@ export default class Shop extends Component {
           <DialogTitle id="alert-dialog-title">Add to Dashboard</DialogTitle>
           <DialogContent>
             <TextField
-              id="school-code"
+              id="school_code_dashboard"
               type="text"
               autoComplete="off"
               name="name"
@@ -208,7 +210,7 @@ export default class Shop extends Component {
             />
             <br />
             <TextField
-              id="desc"
+              id="course_code_dashboard"
               type="text"
               autoComplete="off"
               name="desc"
@@ -220,7 +222,7 @@ export default class Shop extends Component {
             <br />
             <form>
               <TextField
-                id="search"
+                id="search_subject_dashboard"
                 type="text"
                 autoComplete="off"
                 name="search"
@@ -256,7 +258,7 @@ export default class Shop extends Component {
           <DialogTitle id="alert-dialog-title">Add Course</DialogTitle>
           <DialogContent>
             <TextField
-              id="product-name"
+              id="product_name"
               type="text"
               autoComplete="off"
               name="name"
@@ -267,7 +269,7 @@ export default class Shop extends Component {
             />
             <br />
             <TextField
-              id="another-desc"
+              id="product_desc"
               type="text"
               autoComplete="off"
               name="desc"
@@ -278,7 +280,7 @@ export default class Shop extends Component {
             />
             <br />
             <TextField
-              id="price"
+              id="product_price"
               type="number"
               autoComplete="off"
               name="price"
@@ -289,7 +291,7 @@ export default class Shop extends Component {
             />
             <br />
             <TextField
-              id="another-discount"
+              id="product_discount"
               type="number"
               autoComplete="off"
               name="discount"
@@ -318,7 +320,7 @@ export default class Shop extends Component {
               color="primary"
               autoFocus
             >
-              Add Course
+              Add Product
             </Button>
           </DialogActions>
         </Dialog>
@@ -327,7 +329,7 @@ export default class Shop extends Component {
 
         <TableContainer>
           <TextField
-            id="another-search"
+            id="search_by_course_dashboard"
             type="search"
             autoComplete="off"
             name="search"
@@ -356,9 +358,7 @@ export default class Shop extends Component {
                     {row.ID}: {row.name}
                   </TableCell>
                   <TableCell align="center">{row.registrationNumber}</TableCell>
-                  <TableCell align="center">
-                    <a href={row.rmpUrl}>{row.instructors}</a>
-                  </TableCell>
+                  <TableCell align="center">{row.instructors}</TableCell>
                   <TableCell align="center">{row.maxUnits}</TableCell>
                   <TableCell align="center">{row.location}</TableCell>
                   <TableCell align="center">{row.type}</TableCell>
